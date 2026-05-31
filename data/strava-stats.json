@@ -1,1 +1,5 @@
-{"biggest_ride_distance":18555.0,"biggest_climb_elevation_gain":101.80000000000001,"recent_ride_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0,"achievement_count":0},"all_ride_totals":{"count":1,"distance":13788.7,"moving_time":2711,"elapsed_time":2979,"elevation_gain":183.1},"recent_run_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0,"achievement_count":0},"all_run_totals":{"count":20,"distance":172795.7,"moving_time":44089,"elapsed_time":83786,"elevation_gain":1362.8},"recent_swim_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0,"achievement_count":0},"all_swim_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0},"ytd_ride_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0},"ytd_run_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0},"ytd_swim_totals":{"count":0,"distance":0,"moving_time":0,"elapsed_time":0,"elevation_gain":0}}
+{
+  "run_count": 767,
+  "run_distance_meters": 6154460.900000001,
+  "run_distance_miles": 3824.204707011056
+}
