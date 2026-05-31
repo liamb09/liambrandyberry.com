@@ -5,7 +5,7 @@ async function loadStats() {
     console.log(stats);
 
     document.getElementById('alltime-mileage').textContent =
-        Math.round(stats.all_run_totals.distance/1609*100)/100;
+        Math.round(stats.run_distance_miles*100)/100;
 }
 
 loadStats();
