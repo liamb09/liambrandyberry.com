@@ -1,0 +1,52 @@
+name: Update Strava Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # every hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Refresh Strava token
+        id: auth
+        run: |
+          RESPONSE=$(curl -s -X POST https://www.strava.com/oauth/token \
+            -d client_id=${{ secrets.STRAVA_CLIENT_ID }} \
+            -d client_secret=${{ secrets.STRAVA_CLIENT_SECRET }} \
+            -d grant_type=refresh_token \
+            -d refresh_token=${{ secrets.STRAVA_REFRESH_TOKEN }})
+
+          echo "$RESPONSE" > token.json
+
+          ACCESS_TOKEN=$(jq -r '.access_token' token.json)
+
+          echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
+
+      - name: Fetch athlete stats
+        run: |
+          mkdir -p data
+
+          curl -s \
+            -H "Authorization: Bearer $ACCESS_TOKEN" \
+            "https://www.strava.com/api/v3/athletes/${{ secrets.STRAVA_ATHLETE_ID }}/stats" \
+            > data/strava-stats.json
+
+      - name: Commit updated stats
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add data/strava-stats.json
+
+          git diff --staged --quiet || \
+          git commit -m "Update Strava stats"
+
+          git push

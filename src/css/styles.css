@@ -192,6 +192,11 @@ video {
     color: var(--light-grey);
 }
 
+#runner-icon {
+    height: 1em;
+    vertical-align: middle;
+}
+
 @media (min-width: 850px) and (max-width: 1200px)  {
     body {
         width: 70%;
