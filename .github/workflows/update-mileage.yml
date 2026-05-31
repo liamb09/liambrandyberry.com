@@ -34,10 +34,48 @@ jobs:
         run: |
           mkdir -p data
 
-          curl -s \
-            -H "Authorization: Bearer $ACCESS_TOKEN" \
-            "https://www.strava.com/api/v3/athletes/${{ secrets.STRAVA_ATHLETE_ID }}/stats" \
-            > data/strava-stats.json
+          PAGE=1
+          PER_PAGE=200
+
+          echo "[]" > all_activities.json
+
+          while true; do
+            echo "Fetching page $PAGE..."
+
+            curl -s \
+              -H "Authorization: Bearer $ACCESS_TOKEN" \
+              "https://www.strava.com/api/v3/athlete/activities?page=$PAGE&per_page=$PER_PAGE" \
+              > page.json
+
+            COUNT=$(jq 'length' page.json)
+
+            if [ "$COUNT" -eq 0 ]; then
+              break
+            fi
+
+            jq -s '.[0] + .[1]' all_activities.json page.json > merged.json
+            mv merged.json all_activities.json
+
+            PAGE=$((PAGE + 1))
+          done
+
+          jq '
+          {
+            run_count:
+              map(select(.sport_type == "Run" or .type == "Run"))
+              | length,
+
+            run_distance_meters:
+              map(select(.sport_type == "Run" or .type == "Run") | .distance)
+              | add,
+
+            run_distance_miles:
+              (
+                map(select(.sport_type == "Run" or .type == "Run") | .distance)
+                | add
+              ) / 1609.344
+          }
+          ' all_activities.json > data/strava-stats.json
 
       - name: Commit updated stats
         run: |
