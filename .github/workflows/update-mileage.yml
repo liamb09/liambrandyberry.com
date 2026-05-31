@@ -71,9 +71,11 @@ jobs:
 
             run_distance_miles:
               (
-                map(select(.sport_type == "Run" or .type == "Run") | .distance)
-                | add
-              ) / 1609.344
+                (
+                  map(select(.sport_type == "Run" or .type == "Run") | .distance)
+                  | add
+                ) / 1609.344
+              )
           }
           ' all_activities.json > data/strava-stats.json
 
