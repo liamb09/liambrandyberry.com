@@ -41,7 +41,7 @@ title: Liam Brandyberry
     <li>Rundex</li>
 </ul>
 <h2>Links</h2>
-<ul>
+<ul id="links">
     <li>Github: <a href="https://github.com/liamb09">liamb09</a><br /></li>
     <li>Email: liambbrandy at gmail dot com</li>
 </ul>
@@ -50,4 +50,26 @@ title: Liam Brandyberry
 <img src="assets/runner_icon.png" alt="Runner icon" id="runner-icon">
 <span id="alltime-mileage">0</span> miles 
 <a href="{% link _posts/2026-05-31-strava-mileage-display.md %}">(?)</a>
-<br />   
+<br />
+
+<script>
+    async function checkBreadSiteStatus(url) {
+        try {
+            const response = await fetch("https://bread.liambrandyberry.com/status");
+            
+            if (response.ok) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            return false;
+        }
+    }
+
+    checkBreadSiteStatus().then(isUp => {
+        if (isUp) {
+            document.getElementById("links").innerHTML += `<li>Bread: <a href="https://bread.liambrandyberry.com/">bread.liambrandyberry.com</a></li>`;
+        }
+    });
+</script>
