@@ -3,7 +3,7 @@ layout:      post
 title:       Strava Mileage Display
 date:        2026-05-31 11:41:00 -0500
 description: Creating an all-time mileage display badge for my site.
-tags:        coding
+tags:        coding, running
 ---
 
 The other day when I was brainstorming projects for this summer, I thought about doing a little all-time mileage tracker from Strava that could be embedded in a website, just as a fun badge. I ended up not putting it on there because it went against my goal to work on longer projects rather than one-off ones, but now I’ve made it. Whoops.
