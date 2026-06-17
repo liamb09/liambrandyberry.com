@@ -1,5 +1,6 @@
 :root {
     --background-color: #0F1A15;
+    --background-color-light: #27312c;
     --text-color: #FAFBEF;
     --accent-color: #D8C38F; 
     --hover-color: #2E933C;
@@ -217,4 +218,23 @@ video {
     #container {
         display: block;
     }
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+table, th, td {
+    border: none !important;
+    border-collapse: collapse;
+}
+th {
+    font-weight: bold;
+}
+th, td {
+    padding: 0.25rem 0;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--background-color-light);
 }
