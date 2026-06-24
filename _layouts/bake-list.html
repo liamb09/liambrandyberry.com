@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bread Log</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.svg">
+        <link rel="stylesheet" href="{{ 'src/css/log.css' | relative_url }}" />
+    </head>
+    <h1>Bread Log</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Recipe</th>
+            <th>Date</th>
+        </tr>
+        {% for bake in site.bakes %}
+            <tr>
+                <td><a href="{{ bake.url | relative_url }}">{{ bake.title }}</a></td>
+                <td><a href="{{ bake.recipe_link | default: 'https://www.theperfectloaf.com/cookbooks/theperfectloaf/' }}" target="_blank">
+                    {{ bake.recipe_attribution | default: "The Perfect Loaf" }}
+                </a></td>
+                <td>{{ bake.date | date: "%d %B %Y" }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</html>
