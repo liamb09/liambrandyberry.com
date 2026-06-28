@@ -29,7 +29,7 @@
                 <td><a href="{{ bake.recipe_link | default: 'https://www.theperfectloaf.com/cookbooks/theperfectloaf/' }}" target="_blank">
                     {{ bake.recipe_attribution | default: "The Perfect Loaf" }}
                 </a></td>
-                <td>{{ bake.date | date: "%d %B %Y" }}</td>
+                <td>{{ bake.date | date: "%-d %B %Y" }}</td>
             </tr>
         {% endfor %}
     </table>
