@@ -37,7 +37,7 @@ plugins:
 collections:
   bakes:
     output: true
-    permalink: /bread-log/:name/
+    permalink: /bread-log/:year/:month/:day/:title/
 
 # Exclude from processing.
 # The following items will not be processed, by default.

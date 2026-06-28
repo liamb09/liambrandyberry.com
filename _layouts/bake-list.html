@@ -10,13 +10,20 @@
     </head>
     <h1>Bread Log</h1>
 
+    <p>
+        Here I document my successes and failures when making bread. I made it mostly for me,
+        so that I could look back on it and format it nicely, but it turned out well so I
+        decided to publish it. I've imported notes from my old, short-lived bread log on Google Docs, 
+        which I stopped using almost a year ago before making this.
+    </p>
+
     <table>
         <tr>
             <th>Name</th>
             <th>Recipe</th>
             <th>Date</th>
         </tr>
-        {% for bake in site.bakes %}
+        {% for bake in site.bakes reversed %}
             <tr>
                 <td><a href="{{ bake.url | relative_url }}">{{ bake.title }}</a></td>
                 <td><a href="{{ bake.recipe_link | default: 'https://www.theperfectloaf.com/cookbooks/theperfectloaf/' }}" target="_blank">
