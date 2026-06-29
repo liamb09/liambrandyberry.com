@@ -8,30 +8,62 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.svg">
         <link rel="stylesheet" href="{{ 'src/css/log.css' | relative_url }}" />
     </head>
-    <h1>Bread Log</h1>
+    <body>
+        <h1>Bread Log</h1>
 
-    <p>
-        Here I document my successes and failures when making bread. I made it mostly for me,
-        so that I could look back on it and format it nicely, but it turned out well so I
-        decided to publish it. I've imported notes from my old, short-lived bread log on Google Docs, 
-        which I stopped using almost a year ago before making this.
-    </p>
+        <p>
+            Here I document my successes and failures when making bread. I made it mostly for me,
+            so that I could look back on it and format it nicely, but it turned out well so I
+            decided to publish it. I've imported notes from my old, short-lived bread log on Google Docs, 
+            which I stopped using almost a year ago before making this.
+        </p>
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Recipe</th>
-            <th>Date</th>
-        </tr>
-        {% for bake in site.bakes reversed %}
+        <input type="text" id="search-bar" placeholder="Search bakes..." />
+
+        <table id="bread-log-table">
             <tr>
-                <td><a href="{{ bake.url | relative_url }}">{{ bake.title }}</a></td>
-                <td><a href="{{ bake.recipe_link | default: 'https://www.theperfectloaf.com/cookbooks/theperfectloaf/' }}" target="_blank">
-                    {{ bake.recipe_attribution | default: "The Perfect Loaf" }}
-                </a></td>
-                <td>{{ bake.date | date: "%-d %B %Y" }}</td>
+                <th>Name</th>
+                <th>Recipe</th>
+                <th>Date</th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for bake in site.bakes reversed %}
+                <tr>
+                    <td><a href="{{ bake.url | relative_url }}">{{ bake.title }}</a></td>
+                    <td><a href="{{ bake.recipe_link | default: 'https://www.theperfectloaf.com/cookbooks/theperfectloaf/' }}" target="_blank">
+                        {{ bake.recipe_attribution | default: "The Perfect Loaf" }}
+                    </a></td>
+                    <td>{{ bake.date | date: "%-d %B %Y" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p id="no-results-note" style="display:none;" >No bakes match the search terms.</p>
+    </body>
+    <script>
+        function search() {
+            const searchText = document.getElementById("search-bar").value;
+            var resultsExist = false;
+            
+            for (var row of document.getElementById("bread-log-table").rows) {
+                if (row.firstElementChild.innerHTML === "Name") {
+                    continue;
+                } else {
+                    const cur_name = row.firstElementChild.firstElementChild.innerHTML;
+                    if (cur_name.toLowerCase().includes(searchText.toLowerCase())) {
+                       row.hidden = false;
+                       resultsExist = true;
+                    } else {
+                        row.hidden = true;
+                    }
+                }
+            }
 
+            if (resultsExist) {
+                document.getElementById("no-results-note").style.display = "none";
+            } else {
+                document.getElementById("no-results-note").style.display = "block";
+            }
+        }
+
+        document.getElementById("search-bar").addEventListener("input", search);
+    </script>
 </html>

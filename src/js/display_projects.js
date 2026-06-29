@@ -1,15 +1,15 @@
 projects = [
     {
+        title: "Bread Log Manager",
+        description: "A Python Flask backend for my bread log so that I can update my current bake on my local network.",
+        link: "https://github.com/liamb09/bread-log-backend",
+        languages: "Python, HTML, CSS"
+    },
+    {
         title: "Soft Body Physics Engine",
         description: "A physics engine built completely from scratch, made up of point masses and springs that connect to form shapes and interact with each other.",
         link: "https://github.com/liamb09/soft-body-physics",
         languages: "C++"
-    },
-    {
-        title: "Bread Log Manager",
-        description: "A Google Apps Script web app that enables me to add formatted entries to my sourdough bread log from my phone. Instructions to use it for yourself can be found on the GitHub.",
-        link: "https://github.com/liamb09/bread-log-manager",
-        languages: "AppsScript, HTML, CSS, JS"
     },
     {
         title: "Rundex",
