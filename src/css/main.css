@@ -1,6 +1,7 @@
 :root {
     --background-color: #0F1A15;
     --background-color-light: #27312c;
+    --transparent-white: rgb(255 255 255 / 0.1);
     --text-color: #FAFBEF;
     --accent-color: #D8C38F; 
     --hover-color: #2E933C;
@@ -89,12 +90,12 @@ pre {
     line-height: 1.5rem;
     padding: 8px 12px;
     overflow-x: auto;
-    background-color: #ffffff11;
+    background-color: var(--background-color-light);
 }
 
 code {
     padding: 1px 5px;
-    background-color: #ffffff11;
+    background-color: var(--background-color-light);
     border-radius: 3px;
 }
 
