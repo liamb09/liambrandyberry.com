@@ -15,3 +15,5 @@ At first I thought I would just make an API call to Strava each time someone vis
 During this process I also got to learn about another great component of GitHub, which is its repository secrets. These let you store sensitive information (such as API keys) so that you don’t have to obfuscate them, which I found annoying when making [Rundex](https://github.com/liamb09/Rundex). It was another surprisingly nice feature of GitHub that I didn’t know about before.
 
 This project came together pretty fast, and it’s pretty cool to have a little mileage icon on my website now. If you want to add this badge to your own GitHub Pages site, you can copy my ``update-mileage.yml`` file into ``.github/workflows/`` in your repo and add the ``STRAVA_ATHLETE_ID``, ``STRAVA_CLIENT_ID``, ``STRAVA_CLIENT_SECRET``, and ``STRAVA_REFRESH_TOKEN`` repository secrets. That should be all you need so that the Action writes total mileage data to ``data/strava-stats.json``, which you can read and display on your site.
+
+_Edit: just a month after I implemented this, Strava began requiring a subscription to use their API, which is not worth it for me. So this no longer exists._
