@@ -1,5 +1,11 @@
 projects = [
     {
+        title: "SafeWalkers",
+        description: "An app that allows pedestrians to generate safe and engaging routes to their destinations.",
+        link: "https://github.com/aaravs-s/the-internovators",
+        languages: "React JS, Python FastAPI"
+    },
+    {
         title: "Bread Log Manager",
         description: "A Python Flask backend for my bread log so that I can update my current bake on my local network.",
         link: "https://github.com/liamb09/bread-log-backend",
